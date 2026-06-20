@@ -1,0 +1,33 @@
+# ============================================================
+# Tugas Final - Information Retrieval
+# Pencarian Siswa SMA Berprestasi dari Instagram
+# ============================================================
+
+# NLP & Text Processing
+nltk==3.9.1
+scikit-learn==1.5.2
+numpy==1.26.4
+pandas==2.2.3
+
+# BM25
+rank_bm25==0.2.2
+
+# NER & LLM (Indonesian NLP)
+transformers==4.44.2
+torch==2.4.1
+tokenizers==0.19.1
+
+# IndoBERT / Indonesian BERT (HuggingFace)
+sentencepiece==0.2.0
+
+# Visualization
+matplotlib==3.9.2
+seaborn==0.13.2
+wordcloud==1.9.3
+
+# Utilities
+python-dotenv==1.0.1
+tqdm==4.66.5
+colorama==0.4.6
+tabulate==0.9.0
+openpyxl==3.1.5

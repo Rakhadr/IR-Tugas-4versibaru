@@ -1,0 +1,108 @@
+﻿Rank,Nama Siswa,Sekolah,Provinsi,Bidang,Prestasi,Tingkat,Cosine Similarity,LLM Sim Score,Eng Score,Final Score,Rekomendasi,Jumlah Post,Total Likes,Kelas XI,URL Post
+1,dalam menimba ilmu,,Jakarta,,Juara Harapan 2 Lomba Olimpiade OMI Sains Indonesia Tingkat Nasional di SKI Jakarta Tahun 2025,,0.624916,0.67728,0.328186,0.215596,SANGAT DIREKOMENDASIKAN,4,18,False,https://www.instagram.com/p/DYCRxqIjw_X/
+2,Aiko Hanako Lasut,,,,Juara Harapan 1 Kategori Sarjana di Pilmapres Tingkat Wilayah LLDIKTI Wilayah XVI 2026,,0.690136,0.635454,1.0,0.207041,SANGAT DIREKOMENDASIKAN,1,234,False,https://www.instagram.com/p/DYDvT9Cj1-R/
+3,murid,SMAN Egeri1Pemangkat,,,juara umum dan juara kelas,,0.682495,0.667513,0.767394,0.204749,SANGAT DIREKOMENDASIKAN,1,65,False,https://www.instagram.com/p/DX6ql68mGr7/
+4,Zilvando Ahmad Arrasyid Satya Yudha,,,,Juara 2 Olimpiade Sains Nasional,,0.665926,0.633633,0.848916,0.199778,DIREKOMENDASIKAN,1,102,False,https://www.instagram.com/p/DYCWnMomARI/
+5,Clarissa Amarullah Shidiq,,,Seni & Budaya,juara sebagai Gold Award kategori Vocal B dalam lomba ORC Kreazi Olimpiade Rihand Creative,,0.59234,0.600039,0.548711,0.195472,DIREKOMENDASIKAN,3,34,False,https://www.instagram.com/p/DSnDGDiAf3D/
+6,Ainun Hajar Maharani,SMA Itdaarussalaam,Bali,Karya Ilmiah,Medali Perak,,0.647333,0.655037,0.603679,0.1942,DIREKOMENDASIKAN,1,26,True,https://www.instagram.com/p/DX9oWEwvVQH/
+7,Dwi Zaskia Siswi,,,Olahraga,medali emas pada ajang Olimpiade Olahraga Siswa Nasional cabang olahraga bulutangkis,,0.640106,0.67864,0.421751,0.192032,DIREKOMENDASIKAN,1,9,False,https://www.instagram.com/p/DYD_irIkq2-/
+8,Tiara Alfianti,,,Karya Ilmiah,Juara 1 Nasional Bidang IPS,,0.617988,0.644138,0.469807,0.185396,DIREKOMENDASIKAN,1,12,False,https://www.instagram.com/p/DYCl_goEsGu/
+9,Gheisan Salma Damia,,,Olahraga,Juara 1 Lomba pada ajang Kejuaraan Nasional Taekwondo Tasik Open 9,,0.601568,0.601195,0.603679,0.18047,DIREKOMENDASIKAN,1,26,False,https://www.instagram.com/p/DX6SC2iCdhL/
+10,Friska Amelia Mulyanto,,,Olahraga,Juara OLIMPIADE OLAHRAGA SISWA NASIONAL,,0.601481,0.624717,0.469807,0.180444,DIREKOMENDASIKAN,1,12,False,https://www.instagram.com/p/DYD28RjAdIt/
+11,Ayesha,,,Olahraga,Juara 2 Kyorugi U,,0.599725,0.610386,0.539315,0.179918,DIREKOMENDASIKAN,1,18,False,https://www.instagram.com/p/DYCA0J-EoaR/
+12,Aura Riski Amelia,MAN 5,Jakarta,Olahraga,"Juara 3 Pencak Silat Jakarta Utara 2026
+
+Selamat dan sukses kepada Aura Riski Amelia kelas XID atas prestasi meraih Juara 3 Pencak Silat dalam ajang Piala Wali Kota Jakarta Utara Cup 5 yang diselenggarakan di Gelanggang Remaja Jakarta Utara",,0.598931,0.550973,0.870687,0.179679,DIREKOMENDASIKAN,1,115,True,https://www.instagram.com/p/DYBicNZk7Yq/
+13,Arya Maulana Saputra,,,,Juara Madya 1 Adzan dan Juara 2 Pengetahuan Agama dalam ajang MAC Scout Competition se,,0.596446,0.666191,0.201226,0.178934,DIREKOMENDASIKAN,1,2,False,https://www.instagram.com/p/DYD4o-JAdHH/
+14,Syakila Meinanda,,,Seni & Budaya,Juara 2 cabang lomba Kriya dalam ajang Festival dan Lomba Seni Siswa Nasional,,0.595166,0.629174,0.402453,0.17855,DIREKOMENDASIKAN,1,8,False,https://www.instagram.com/p/DYBrd3Okgkj/
+15,Danishwara Abinaya Humayyun mendapatkan juara,,,Olahraga,juara 1 cabang kids atletik putra tingkat kecamatan  ngadirojo tahun 2026,,0.591553,0.651136,0.253919,0.177466,DIREKOMENDASIKAN,1,3,True,https://www.instagram.com/p/DYD3Mp_k68s/
+16,Almeera Jasmin Hermawan,,,Akademik - Matematika,"Medali Perak
+Kategori Matematika TK",,0.574374,0.588202,0.496018,0.172312,DIREKOMENDASIKAN,1,14,False,https://www.instagram.com/p/DYDnlDTkzOL/
+17,Giandika Putra Stiandra,,Bali,Olahraga,Juara 1 Lomba Bulutangkis Putra O2SN Tingkat Kecamatan Cisayong Tahun 2026,,0.572141,0.602087,0.402453,0.171642,DIREKOMENDASIKAN,1,8,True,https://www.instagram.com/p/DYB9CFHkw2L/
+18,Alesha Putri Khairin,,,Olahraga,Medali Emas Kategori 25 M Gaya Kaki Bebas Putri dan Medali Emas Kategori 25 M Gaya Kaki Dada Putri,,0.571867,0.55275,0.680193,0.17156,DIREKOMENDASIKAN,1,40,False,https://www.instagram.com/p/DYBNtcAk11s/
+19,yang,SMP Islam Al Azhar,,Karya Ilmiah,Juara Harapan 1 dalam ajang perlombaan Olimpiade Penelitian Siswa Indonesia,,0.571608,0.557561,0.651212,0.171483,DIREKOMENDASIKAN,1,34,False,https://www.instagram.com/p/DYCWU8Ekiab/
+20,Acelya Rily Wibowo,,,Seni & Budaya,Juara 3 cabang lomba Gambar Bercerita dalam ajang Festival dan Lomba Seni Siswa Nasional,,0.570849,0.591268,0.455146,0.171255,DIREKOMENDASIKAN,1,11,False,https://www.instagram.com/p/DYBrOh5Epjm/
+21,Aura Akhadina,SMA SMP JOMBANG,,Seni & Budaya,Juara 1 Menulis Cerita Nasional dalam ajang Festival Lomba Seni dan Sastra Siswa Nasional,,0.569585,0.551682,0.671033,0.170875,DIREKOMENDASIKAN,1,38,False,https://www.instagram.com/p/DQ6dr5XiTuN/
+22,hebat ini berjuang,,Sumsel,Olahraga,juaraan,,0.568443,0.547183,0.688917,0.170533,DIREKOMENDASIKAN,1,42,False,https://www.instagram.com/p/DS1cbUpAce0/
+23,Kanaya Syifa Athaleta,,Bali,Olahraga,"Juara 1 O2SN Cabang Renang Putri
+Tingkat Kecamatan Ngaliyan
+
+Keberhasilan ini merupakan hasil dari kerja keras",,0.562065,0.590232,0.402453,0.16862,DIREKOMENDASIKAN,1,8,False,https://www.instagram.com/p/DYEFIXqD3zP/
+24,Adeeva Afsheen Myesha Syarif,,,Karya Ilmiah,Juara 2 FLS3N Tingkat Kecamatan Semarang Barat pada cabang lomba Mendongeng,,0.557861,0.59341,0.356421,0.167358,DIREKOMENDASIKAN,1,6,False,https://www.instagram.com/p/DYBe4NHCTpd/
+25,Syima Nurin Najwa,,,Olahraga,,,0.557445,0.572911,0.469807,0.167234,DIREKOMENDASIKAN,1,12,False,https://www.instagram.com/p/DUqCQvrEqeN/
+26,Farhansyah kelas IX,,,,Juara Madya 2 sandi dalam ajang MAC Scout Competition se,,0.553143,0.615246,0.201226,0.165943,DIREKOMENDASIKAN,1,2,False,https://www.instagram.com/p/DYD4Zycgena/
+27,Chandra Gian,,,Akademik - Matematika,Juara 2 Tingkat Nasional O2SN Matematika Tahun 2025,,0.552593,0.501581,0.841661,0.165778,DIREKOMENDASIKAN,1,98,False,https://www.instagram.com/p/DUaS4I3AVaN/
+28,Keyla Nur Ghazni Hermawan,,,Seni & Budaya,Juara 3 Cabang MTQ Putri pada kegiatan Pekan Keterampilan dan Seni Pendidikan Agama Islam,,0.550875,0.570581,0.439208,0.165263,DIREKOMENDASIKAN,1,10,False,https://www.instagram.com/p/DYBnDnIjPMm/
+29,Hanif Abbad Pamungkas,,,Olahraga,Juara 2 Seleksi O2SN Bulutangkis Tingkat Kecamatan Semarang Selatan Tahun 2026,,0.548583,0.537685,0.61034,0.164575,DIREKOMENDASIKAN,1,27,True,https://www.instagram.com/p/DYBbabPD0ex/
+30,hebat SDIT Bahana Cendekia,,,,Juara 3,,0.54693,0.56594,0.439208,0.164079,DIREKOMENDASIKAN,1,10,False,https://www.instagram.com/p/DYEEjmgk_HA/
+31,berhasil memberikan hasil terbaik,,,Olahraga,Juara 1 O2SN Cabang Renang Putri Jenjang SD Tingkat Kecamatan Senen,,0.543839,0.554508,0.483381,0.163152,DIREKOMENDASIKAN,1,13,False,https://www.instagram.com/p/DYD8libiQ0k/
+32,Rizky Aditia,SMA Muhammadiyah Pangandaran,,Seni & Budaya,Juara 2 Lomba Baca Puisi dalam ajang Festival Lomba Seni,,0.543068,0.547325,0.518943,0.16292,DIREKOMENDASIKAN,1,16,False,https://www.instagram.com/p/DX_xGPZGUjO/
+33,Mumtaza Az Zahida Rafifa,,,Karya Ilmiah,Medali Perak,,0.54216,0.585813,0.294791,0.162648,DIREKOMENDASIKAN,1,4,False,https://www.instagram.com/p/DYBnN-SEp4e/
+34,Tsamara Dzakiyah Arsyfa Hanum,,,Olahraga,Juara OLIMPIADE OLAHRAGA SISWA NASIONAL,,0.537161,0.60955,0.12696,0.161148,DIREKOMENDASIKAN,1,1,False,https://www.instagram.com/p/DYD3Ji4AdJC/
+35,Sultan Muhammad Alfatih,,,Olahraga,Juara OLIMPIADE OLAHRAGA SISWA NASIONAL,,0.534106,0.576338,0.294791,0.160232,DIREKOMENDASIKAN,1,4,False,https://www.instagram.com/p/DYD2jeogRnd/
+36,Muhammad Fathlan Syafiq,,Bali,,"Juara Umum 3
+di ajang S4ha8at Fun Swimming Series 1 Tahun 2026",,0.533798,0.553571,0.421751,0.160139,DIREKOMENDASIKAN,1,9,True,https://www.instagram.com/p/DYB-PDEEYl-/
+37,Hafshah Kalya Hasian,,Jakarta,,Juara 3 Speed Cards,,0.530647,0.546784,0.439208,0.159194,DIREKOMENDASIKAN,1,10,False,https://www.instagram.com/p/DX6ImeaiXt-/
+38,Ahmad Aslam Fauza,,,,JuaraSD,,0.52698,0.524803,0.539315,0.158094,DIREKOMENDASIKAN,1,18,False,https://www.instagram.com/p/DOTlM0JEu4z/
+39,atas prestasinya,,,Olahraga,Juara2 di Lomba Atletik Kids Putra,,0.524866,0.550275,0.380879,0.15746,DIREKOMENDASIKAN,1,7,False,https://www.instagram.com/p/DYD0_HRjHBj/
+40,Muhammad Ghanim Dzaky,,,Olahraga,Juara 3,,0.524462,0.594609,0.12696,0.157339,DIREKOMENDASIKAN,1,1,False,https://www.instagram.com/p/DYEJq7QgXwA/
+41,Azka Raffasya,,Jawa Tengah,,Juara II Lomba Bercerita SMPLB,,0.521943,0.512702,0.57431,0.156583,DIREKOMENDASIKAN,1,22,True,https://www.instagram.com/p/DYD3mc6k3Ti/
+42,Bhisma,,,Seni & Budaya,Juara Harapan 1 Lomba Menyanyi Solo FLS3N Tingkat Wilayah,,0.517566,0.460701,0.839801,0.15527,DIREKOMENDASIKAN,1,97,False,https://www.instagram.com/p/DXqbUcRD9Wv/
+43,Fardan,SMPN 1,,,juara harapan 3 dalam lomba ilustrasi FLS3SN 2026 Se,,0.515301,0.506324,0.566168,0.15459,DIREKOMENDASIKAN,1,21,False,https://www.instagram.com/p/DX2wgZfkxuq/
+44,Larasati Dwi Mazaya,,Jakarta,Seni & Budaya,Juara Harapan 3,,0.514535,0.542438,0.356421,0.154361,DIREKOMENDASIKAN,1,6,False,https://www.instagram.com/p/DYEF-ZCGgQw/
+45,Fikri Irsyadul Ibad,,,,JuaraLomba,,0.514361,0.534109,0.402453,0.154308,DIREKOMENDASIKAN,1,8,False,https://www.instagram.com/p/DYDxAx2DHQ-/
+46,Yeli Deska Mecca,,,,Juara Harapan 3 Pilmapres Wilayah,,0.513355,0.603947,0.0,0.154006,DIREKOMENDASIKAN,1,0,False,https://www.instagram.com/p/DYDp5kqEwEE/
+47,Zalwa,,,,,,0.506328,0.560169,0.201226,0.151898,DIREKOMENDASIKAN,1,2,False,https://www.instagram.com/p/DX109MPmHUz/
+48,Bervin,,Kalimantan Timur,Akademik - Matematika,Juara 1 Tingkat Kecamatan,,0.506215,0.521121,0.421751,0.151865,DIREKOMENDASIKAN,1,9,False,https://www.instagram.com/p/DYCTkVsGX1Q/
+49,Muhamad Alam Ilman Nurjaman,,,Seni & Budaya,Juara 1 Lomba Kriya FLS3N Tingkat Kecamatan Sindangkasih Tahun 2026,,0.506044,0.550537,0.253919,0.151813,DIREKOMENDASIKAN,1,3,True,https://www.instagram.com/p/DYCDa-qGlKa/
+50,Maila Hana Sekar Mazaya,SMAN 39,Jakarta,,Juara 1 dalam ajang Lomba Fashion Show Berkebaya yang diselenggarakan oleh Dewan Kerajinan Nasional Daerah di SME Tower,,0.503229,0.498608,0.529412,0.150969,DIREKOMENDASIKAN,1,17,True,https://www.instagram.com/p/DYEJvLjE0m4/
+51,Hizkia Hugo Jose Fernando,,,Karya Ilmiah,juaraan Wushu Piala Walikota Surabaya 2026 tingkat nasional,,0.50046,0.446734,0.804905,0.150138,DIREKOMENDASIKAN,1,80,False,https://www.instagram.com/p/DYB8-zwgQSl/
+52,Rafif Athar Rajendra,,Bali,Olahraga,Juara 2 Cabang Olahraga Tenis Lapangan Kelompok SD Putra POPDA Kota Semarang Tahun 2026,,0.499437,0.46453,0.697244,0.149831,DIREKOMENDASIKAN,1,44,True,https://www.instagram.com/p/DYBbuCyD6k_/
+53,Aldila Setiana Ardani,,Bali,,Juara 3 FLS3N Tingkat Kecamatan Semarang Barat pada cabang lomba Gambar Bercerita,,0.498765,0.523884,0.356421,0.149629,DIREKOMENDASIKAN,1,6,False,https://www.instagram.com/p/DYBfJh9CbVF/
+54,menerima apresiasi langsung,,Jawa Timur,,Juara 1 OSN IPA 2025 Tingkat Nasional,,0.495993,0.4388,0.820087,0.148798,DIREKOMENDASIKAN,1,87,False,https://www.instagram.com/p/DX-H8SNExYE/
+55,Ni Komang Indah Pratiwi,SMK Negeri 4 Denpasar dalam,Bali,Olahraga,Juara 1 Kategori Ganda Stroke Competition Putri,,0.493241,0.474972,0.596766,0.147972,DIREKOMENDASIKAN,1,25,False,https://www.instagram.com/p/DX1ON6PE4Dl/
+56,Jehan Caliana Shanum,,,,Juara 2,,0.491748,0.511313,0.380879,0.147524,DIREKOMENDASIKAN,1,7,False,https://www.instagram.com/p/DRtKbOUE410/
+57,Alfarizy Shagufta,,,Olahraga,juaraan bulutangkis,,0.490093,0.513683,0.356421,0.147028,DIREKOMENDASIKAN,1,6,False,https://www.instagram.com/p/DYD5E-sABmy/
+58,sobat,SMAN Saku,,Seni & Budaya,juara dalam Festival Seni dan Sastra Nasional,,0.488001,0.419915,0.873818,0.1464,DIREKOMENDASIKAN,1,117,False,https://www.instagram.com/p/DX6KBrXEXBa/
+59,dan bimbingan bapak,,,,Juara 2 Lomba OSN IPA Tingkat Kecamatan Tahun 2026,,0.486501,0.572354,0.0,0.14595,DIREKOMENDASIKAN,1,0,True,https://www.instagram.com/p/DYEKTc0PkDY/
+60,Mba Fiona Arsyila Jelita,,Bali,Olahraga,juaraan Dulogmas Piala Bupati Purbalingga yang dilaksanakan pada tanggal 2 Mei 2026,,0.485074,0.51276,0.328186,0.145522,DIREKOMENDASIKAN,1,5,False,https://www.instagram.com/p/DX1XLQDmdDm/
+61,Fathar Liem Setiawan,,,Olahraga,Juara 1 O2SN Pencak Silat Putra Jenjang SD Tingkat Kecamatan Senen,,0.481929,0.481673,0.483381,0.144579,DIREKOMENDASIKAN,1,13,False,https://www.instagram.com/p/DYD8Zk9iWSB/
+62,yang sholeh,,,Olahraga,Juara 1 Cabang Olahraga Renang pada O2SN Tingkat Kabupaten Cirebon,,0.479141,0.458383,0.596766,0.143742,DIREKOMENDASIKAN,1,25,False,https://www.instagram.com/p/DX3-Ex0lI1G/
+63,sobat Smansaku,SMAN Saku,,Debat,juara II dalam Lomba Debat antar SLTA Kab,,0.478532,0.395126,0.951163,0.14356,DIREKOMENDASIKAN,1,179,False,https://www.instagram.com/p/DX_yLx5EVAO/
+64,Khoirul Rohman,,,,Juara 2 Tata Boga dalam ajang LKSN 2026 Tingkat Kabupaten Bojonegoro,,0.477062,0.494036,0.380879,0.143119,DIREKOMENDASIKAN,1,7,False,https://www.instagram.com/p/DYCkurOElb6/
+65,berhasil mendapatkan Juara,,,Olahraga,Juara 1 Lomba Renang 25 Meter Kick Board Putri dalam Bisa Renang Funswim Day 2026 Heat 1 2026,,0.474291,0.486968,0.402453,0.142287,DIREKOMENDASIKAN,1,8,False,https://www.instagram.com/p/DYB2wCZme5o/
+66,Husna Nur Fauziyyah Azmi,SMA Rtandhappy,,,Juara 2 FLS3N Tingkat Kecamatan Banjaran,,0.471318,0.491594,0.356421,0.141395,DIREKOMENDASIKAN,1,6,False,https://www.instagram.com/p/DYEIzonEbVq/
+67,Kayla Khansa Izdihar,SMAN 39,Jakarta,Seni & Budaya,Juara 3 dalam ajang National Folklore Festival yang diselenggarakan oleh Universitas Indonesia di Gedung Pusgiwa UI pada tanggal 30 April 2026,,0.468239,0.487971,0.356421,0.140472,DIREKOMENDASIKAN,1,6,False,https://www.instagram.com/p/DYEKaU5zxSW/
+68,Aldo,,,,Juara 3 Lomba Mendongeng FLS3N Tingkat Wilayah,,0.461572,0.403043,0.793235,0.138472,DIREKOMENDASIKAN,1,75,False,https://www.instagram.com/p/DXqaxAnD2F2/
+69,Siti Nur Jaizah Nasier,SMAN 7 PINRANG,,Olahraga,Juara II pada lomba O2SN 2026 tingkat Kabupaten Pinrang cabang olahraga Renang Putri,,0.460483,0.441832,0.566168,0.138145,DIREKOMENDASIKAN,1,21,False,https://www.instagram.com/p/DYEH1u4DzDn/
+70,Mahya Sholatiah,,,,Juara 5 pada lomba Menggambar Bercerita dalam kegiatan FLS3N Tingkat Kecamatan Astambul,,0.457818,0.516205,0.12696,0.137345,DIREKOMENDASIKAN,1,1,False,https://www.instagram.com/p/DYD-FPbgXSO/
+71,dalam menuntut ilmu,,,Karya Ilmiah,Juara 3 Lomba OSN IPA Tingkat Kecamatan Tahun 2026,,0.457353,0.538062,0.0,0.137206,DIREKOMENDASIKAN,1,0,True,https://www.instagram.com/p/DYEKXoWPCg1/
+72,terbaik,,,,juara umum FLS3N tingkat kecamatan,,0.456364,0.424876,0.634798,0.136909,DIREKOMENDASIKAN,1,31,False,https://www.instagram.com/p/DX9EmIJgQVb/
+73,Raka Arkhanda Rumi,,,Karya Ilmiah,Juara Favorit Lembaga,,0.455927,0.448852,0.496018,0.136778,DIREKOMENDASIKAN,1,14,True,https://www.instagram.com/p/DXVzpEnCeMD/
+74,Jenifer Laurensia Chelsea Mutiara Vianney,,,Seni & Budaya,juara 1 dalam lomba Justice In Art,,0.452341,0.433757,0.557647,0.135702,DIREKOMENDASIKAN,1,20,False,https://www.instagram.com/p/DMfqErcP1Sh/
+75,Zio juga membanggakan dengan Juara,,,Seni & Budaya,JUARA 3 UNTUK TIM POKJA PAUD KEC,,0.45218,0.531976,0.0,0.135654,DIREKOMENDASIKAN,1,0,False,https://www.instagram.com/p/DX_7bbGCSIV/
+76,masih sangat besar untuk,,,Akademik - Matematika,Juara 2 Lomba OSN Matematika Tingkat Kecamatan Tahun 2026,,0.451594,0.531287,0.0,0.135478,DIREKOMENDASIKAN,1,0,True,https://www.instagram.com/p/DYEKbnkPJz2/
+77,Raja Jayendra Irawan,,,Olahraga,Juara 3,,0.44556,0.479379,0.253919,0.133668,DIREKOMENDASIKAN,1,3,False,https://www.instagram.com/p/DYEJJjugYeJ/
+78,Nur Jaenab,SMPN 3 Gedangsari,,Karya Ilmiah,,,0.445169,0.478918,0.253919,0.133551,DIREKOMENDASIKAN,1,3,True,https://www.instagram.com/p/DYEE5aLE348/
+79,Milen Novitasari,,Bengkulu,Seni & Budaya,juara 2 dalam lomba Justice In Art,,0.443602,0.430306,0.518943,0.13308,DIREKOMENDASIKAN,1,16,False,https://www.instagram.com/p/DMfp1tvviBk/
+80,Jenifer Nur Saputri,SMAN 2 Kudus atas prestasi,,Seni & Budaya,juara 3 dalam lomba Justice In Art,,0.442048,0.404226,0.656372,0.132614,DIREKOMENDASIKAN,1,35,False,https://www.instagram.com/p/DMfpcrePDCx/
+81,Ficki di cabang Kaligrafi,,,Seni & Budaya,Juara 3 di FASI tingkat kecamatan Sungai Lilin tahun ini,,0.441178,0.519032,0.0,0.132353,DIREKOMENDASIKAN,1,0,False,https://www.instagram.com/p/DYBrs7Xj7Ed/
+82,pada ilmu pengetahuan,,,Karya Ilmiah,Juara 1 Lomba OSN IPS Tingkat Kecamatan Tahun 2026,,0.437875,0.515147,0.0,0.131363,DIREKOMENDASIKAN,1,0,True,https://www.instagram.com/p/DYEKB-4PF7b/
+83,Al Thamiz Kastara,,,Seni & Budaya,,,0.42623,0.479042,0.12696,0.127869,DIREKOMENDASIKAN,1,1,True,https://www.instagram.com/p/DYBSmvTEjd-/
+84,Elena Nayahara Zen,,Bali,Seni & Budaya,JUARA 1 MENDONGENG,,0.416759,0.4679,0.12696,0.125028,DIREKOMENDASIKAN,1,1,False,https://www.instagram.com/p/DSjLoEZEqGu/
+85,Surohman,SMAN Sapurbolinggo,Lampung,Olahraga,Juara 3 Atletik Panca Lomba Putra tingkat Kabupaten Lampung Timur,,0.415564,0.39928,0.507839,0.124669,DIREKOMENDASIKAN,1,15,False,https://www.instagram.com/p/DYD7wi0CZTw/
+86,Amelia Ratna Nur Fitriani,,,Olahraga,Juara 1 O2SN Cabang Renang Tingkat Kapanewon,,0.410947,0.403147,0.455146,0.123284,DIREKOMENDASIKAN,1,11,False,https://www.instagram.com/p/DX6aMEdE7RK/
+87,Diana Natasya Dwi Assanti,,Bali,Olahraga,Juara 1 Lomba BOCCE O2SN Tingkat Kabupaten Bojonegoro,,0.406325,0.47803,0.0,0.121898,DIREKOMENDASIKAN,1,0,False,https://www.instagram.com/p/DYEBo-aATrN/
+88,Hanina Fathimatussalma,,,,Juara 2 FLS3N Cabang Menulis Cerita Jenjang SD Tingkat Kecamatan Senen,,0.39902,0.374262,0.539315,0.119706,DIREKOMENDASIKAN,1,18,False,https://www.instagram.com/p/DYD8rBgCUxZ/
+89,Cetta Maheswari Mardianto,,,Seni & Budaya,Juara 3 FLS3N Cabang Seni Kriya tingkat Kecamatan Ngombol,,0.394808,0.442076,0.12696,0.118442,DIREKOMENDASIKAN,1,1,False,https://www.instagram.com/p/DYD9RQUj7la/
+90,Rafardhan Hafidz Athalla,,,Olahraga,,,0.37603,0.357086,0.483381,0.112809,DIREKOMENDASIKAN,1,13,False,https://www.instagram.com/p/DYDsjxyAaBe/
+91,Min Lotim,,,,juara,,0.371596,0.437171,0.0,0.111479,DIREKOMENDASIKAN,1,-1,False,https://www.instagram.com/p/DLcjJQazGL1/
+92,Aqila Muffidah,SMP Negeri 2 Wonomulyo,,,Juara Favorit,,0.363593,0.316759,0.628983,0.109078,DIREKOMENDASIKAN,1,30,False,https://www.instagram.com/p/DXl-hi4E0ip/
+93,Siska Pratiwi,,Bangka Belitung,Seni & Budaya,Juara 3 Lomba Tari Kreasi FLS3N 2026 tingkat Provinsi Kepulauan Bangka Belitung,,0.361725,0.299763,0.712842,0.108517,DIREKOMENDASIKAN,1,48,False,https://www.instagram.com/p/DYByKGzkjd5/
+94,Tim Estafet Mix Atletik,,,Olahraga,Medali Perak di POPDA DEMAK 2026,,0.350778,0.335172,0.439208,0.105233,DIREKOMENDASIKAN,1,10,False,https://www.instagram.com/p/DX-464SkTFY/
+95,Ayeesha Noor Qiranisa,SMA Swastabandung,,,juaraan Nasional Squash Indonesia 2025,,0.348141,0.294657,0.651212,0.104442,DIREKOMENDASIKAN,1,34,False,https://www.instagram.com/p/DLdvIVAyjHT/
+96,Cindy Lazar,,,,Juara Favorit di ajang MERMAID,,0.329493,0.28923,0.557647,0.098848,PERTIMBANGKAN,1,20,False,https://www.instagram.com/p/DXnoCpuEjuq/
+97,Daffi Hidayat Ibrahim,,,Olahraga,,,0.311773,0.366791,0.0,0.093532,PERTIMBANGKAN,1,0,True,https://www.instagram.com/p/DYEJRzGEed_/
+98,Irpan,,Bangka Belitung,,Juara 2 Lomba Fotografi FLS3N 2026 tingkat Provinsi Kepulauan Bangka Belitung,,0.302486,0.253142,0.582105,0.090746,PERTIMBANGKAN,1,23,False,https://www.instagram.com/p/DYBxSjckplt/
+99,Ririn Dwi Aryanti,SMA Windu Wacana Cirebon,,,,,0.265975,0.312911,0.0,0.079792,PERTIMBANGKAN,1,0,False,https://www.instagram.com/p/DYD35Q7E7_p/
+100,Coastwave,,,Seni & Budaya,Juara Favorit Festival Les Surabaya Barat 2026,,0.261719,0.230397,0.439208,0.078516,PERTIMBANGKAN,1,10,False,https://www.instagram.com/p/DXsyBACEtsx/
