@@ -19,6 +19,7 @@ Output akhir:
 
 import json
 import csv
+import re
 import pandas as pd
 import numpy as np
 from pathlib import Path
@@ -44,28 +45,81 @@ LEVEL_WEIGHTS = {
     None               : 0.30,  # default jika tidak diketahui
 }
 
+# ─── Bobot jenjang pendidikan ──────────────────────────────────────────────────
+# Target beasiswa adalah siswa SLTA → bobot tertinggi.
+# SLTP berkurang, SD lebih rendah lagi, kuliah tidak relevan.
+JENJANG_WEIGHTS = {
+    "SLTA": 1.00,   # SMA, SMAN, SMK, SMKN, MA, MAN, Madrasah Aliyah
+    "SLTP": 0.50,   # SMP, SMPN, MTs, MTsN
+    "SD"  : 0.20,   # SD, SDN, MI, MIN
+    "PT"  : 0.05,   # Universitas, Institut, Politeknik, Akademi → tidak relevan
+    None  : 0.70,   # tidak diketahui → asumsi SLTA (data utama dari akun SMA)
+}
+
+# Kata kunci untuk deteksi jenjang dari nama sekolah
+_SLTA_KEYWORDS = re.compile(
+    r"\b(SMA|SMAN|SMK|SMKN|MA\b|MAN\b|SMAK|SMAA|Madrasah\s+Aliyah|Aliyah)",
+    re.IGNORECASE,
+)
+_SLTP_KEYWORDS = re.compile(
+    r"\b(SMP|SMPN|MTs|MTsN|Madrasah\s+Tsanawiyah|Tsanawiyah)",
+    re.IGNORECASE,
+)
+_SD_KEYWORDS = re.compile(
+    r"\b(SD\b|SDN\b|MI\b|MIN\b|Madrasah\s+Ibtidaiyah|Ibtidaiyah)",
+    re.IGNORECASE,
+)
+_PT_KEYWORDS = re.compile(
+    r"\b(Universitas|Institut|Politeknik|Akademi|Sekolah\s+Tinggi|STIE|STIK|STIT|"
+    r"UIN|UNY|UNS|ITB|ITS|IPB|UI\b|UGM|UNPAD|UNAIR|UNDIP|UNHAS)",
+    re.IGNORECASE,
+)
+
+
+def detect_jenjang(sekolah):
+    """
+    Deteksi jenjang pendidikan dari nama sekolah.
+    Return: 'SLTA', 'SLTP', 'SD', 'PT', atau None.
+    """
+    if not sekolah:
+        return None
+    if _SLTA_KEYWORDS.search(sekolah):
+        return "SLTA"
+    if _SLTP_KEYWORDS.search(sekolah):
+        return "SLTP"
+    if _SD_KEYWORDS.search(sekolah):
+        return "SD"
+    if _PT_KEYWORDS.search(sekolah):
+        return "PT"
+    return None
+
 
 def compute_final_score(student: dict) -> float:
     """
     Hitung skor akhir siswa untuk rekomendasi beasiswa.
-    
-    Final Score = cosine_similarity × level_weight × frequency_bonus
-    
+
+    Final Score = cosine_similarity × level_weight × jenjang_weight × frequency_bonus
+
     Komponen:
       cosine_similarity : skor relevansi dari TF-IDF + BM25
-      level_weight      : bobot berdasarkan tingkat kompetisi
+      level_weight      : bobot berdasarkan tingkat kompetisi (internasional s/d sekolah)
+      jenjang_weight    : bobot jenjang pendidikan (SLTA=1.0, SLTP=0.5, SD=0.2, PT=0.05)
       frequency_bonus   : bonus jika muncul di banyak post (min 1.0, max 1.2)
     """
     cosine  = student.get("cosine_similarity", 0)
     tingkat = student.get("tingkat_kompetisi")
+    sekolah = student.get("sekolah")
     n_posts = student.get("jumlah_post", 1)
 
-    level_w = LEVEL_WEIGHTS.get(tingkat, 0.30)
+    level_w   = LEVEL_WEIGHTS.get(tingkat, 0.30)
+
+    jenjang   = detect_jenjang(sekolah)
+    jenjang_w = JENJANG_WEIGHTS.get(jenjang, JENJANG_WEIGHTS[None])
 
     # Bonus frekuensi: 1.0 + min(0.2, 0.05 × (n_posts - 1))
     freq_bonus = 1.0 + min(0.20, 0.05 * (n_posts - 1))
 
-    return round(cosine * level_w * freq_bonus, 6)
+    return round(cosine * level_w * jenjang_w * freq_bonus, 6)
 
 
 def classify_student(student: dict) -> str:
@@ -85,11 +139,14 @@ def classify_student(student: dict) -> str:
 
 def enrich_student(student: dict, rank: int) -> dict:
     """Tambahkan field tambahan untuk output akhir."""
+    jenjang     = detect_jenjang(student.get("sekolah"))
     final_score = compute_final_score(student)
-    student["rank"]          = rank
-    student["final_score"]   = final_score
-    student["rekomendasi"]   = classify_student({**student, "final_score": final_score})
-    student["generated_at"]  = datetime.now().isoformat()
+    student["rank"]               = rank
+    student["jenjang_pendidikan"] = jenjang or "Tidak Diketahui"
+    student["jenjang_weight"]     = JENJANG_WEIGHTS.get(jenjang, JENJANG_WEIGHTS[None])
+    student["final_score"]        = final_score
+    student["rekomendasi"]        = classify_student({**student, "final_score": final_score})
+    student["generated_at"]       = datetime.now().isoformat()
     return student
 
 
@@ -104,6 +161,8 @@ def export_csv(students: list, path: Path, top_n: int = None):
             "Rank"               : s.get("rank"),
             "Nama Siswa"         : s.get("nama_siswa", "-"),
             "Sekolah"            : s.get("sekolah", "-"),
+            "Jenjang"            : s.get("jenjang_pendidikan", "-"),
+            "Jenjang Weight"     : s.get("jenjang_weight", "-"),
             "Provinsi"           : s.get("provinsi", "-"),
             "Bidang"             : s.get("bidang", "-"),
             "Prestasi"           : s.get("prestasi", "-"),
@@ -205,6 +264,7 @@ def main():
             "query"               : data.get("summary", {}).get("query"),
             "indexing_weights"    : data.get("summary", {}).get("indexing_weights"),
             "level_weights"       : LEVEL_WEIGHTS,
+            "jenjang_weights"     : JENJANG_WEIGHTS,
             "rekomendasi_counts"  : rekomendasi_counts,
         },
         "students": enriched,

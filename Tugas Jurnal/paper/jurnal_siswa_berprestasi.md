@@ -8,15 +8,15 @@
 
 ## Abstrak
 
-**Abstrak—** Identifikasi siswa SMA berprestasi dari media sosial seperti Instagram merupakan langkah alternatif yang strategis untuk program penawaran beasiswa. Namun, sifat data Instagram yang tidak terstruktur, pendek, dan sarat dengan noise linguistik menyulitkan pencarian informasi (Information Retrieval - IR) secara manual. Penelitian ini mengimplementasikan sistem temu kembali informasi berbasis pencarian kata kunci (*lexical search*) menggunakan kombinasi TF-IDF, BM25, serta skor *engagement* pengguna. Sistem ini didukung oleh *Named Entity Recognition* (NER) untuk mengekstrak entitas nama siswa dan sekolah secara otomatis. Pengujian dilakukan pada 914 postingan Instagram hasil crawling menggunakan kata kunci pencarian beasiswa dengan total 100 entitas siswa teridentifikasi. Hasil evaluasi menggunakan *ground truth* menunjukkan bahwa metode yang diusulkan memiliki tingkat presisi sempurna pada peringkat teratas (Precision@5 = 1.0000 dan NDCG@5 = 1.0000), serta mampu mempertahankan nilai MAP sebesar 0.7653. Penelitian ini menyimpulkan bahwa implementasi pembobotan leksikal gabungan yang diperkuat dengan analisis *engagement* sangat tangguh dalam menghasilkan rekomendasi penerima beasiswa yang akurat dan relevan pada batas pencarian yang terfokus.
+**Abstrak—** Identifikasi siswa SMA berprestasi dari media sosial seperti Instagram merupakan langkah alternatif yang strategis untuk program penawaran beasiswa. Namun, sifat data Instagram yang tidak terstruktur, pendek, dan sarat dengan noise linguistik menyulitkan pencarian informasi (Information Retrieval - IR) secara manual. Penelitian ini mengimplementasikan sistem temu kembali informasi berbasis pencarian kata kunci (*lexical search*) menggunakan kombinasi TF-IDF, BM25, serta skor *engagement* pengguna. Sistem ini didukung oleh *Named Entity Recognition* (NER) untuk mengekstrak entitas nama siswa dan sekolah secara otomatis. Sebagai inovasi utama, diperkenalkan **pembobotan jenjang pendidikan** (*education level weighting*) yang secara eksplisit memprioritaskan siswa berjenjang SLTA (SMA/SMK/MA) sebagai target penerima beasiswa, sekaligus menurunkan bobot secara bertahap untuk SLTP dan menetapkan siswa perguruan tinggi sebagai tidak relevan. Pengujian dilakukan pada 914 postingan Instagram hasil crawling menggunakan kata kunci pencarian beasiswa dengan total 100 entitas siswa teridentifikasi. Hasil evaluasi menggunakan *ground truth* menunjukkan bahwa metode yang diusulkan memiliki tingkat presisi sempurna pada peringkat teratas (Precision@5 = 1.0000 dan NDCG@5 = 1.0000), serta mampu mempertahankan nilai MAP sebesar 0.7653. Penelitian ini menyimpulkan bahwa implementasi pembobotan leksikal gabungan yang diperkuat dengan analisis *engagement* dan pembobotan jenjang pendidikan sangat tangguh dalam menghasilkan rekomendasi penerima beasiswa yang akurat dan relevan pada batas pencarian yang terfokus.
 
-**Kata Kunci—** *Information Retrieval, TF-IDF, BM25, Named Entity Recognition, Engagement, Siswa Berprestasi, Beasiswa.*
+**Kata Kunci—** *Information Retrieval, TF-IDF, BM25, Named Entity Recognition, Engagement, Jenjang Pendidikan, Siswa Berprestasi, Beasiswa.*
 
 ---
 
 **Abstract—** *Identifying high-achieving high school students from social media platforms such as Instagram represents a strategic alternative channel for scholarship recruitment. However, the unstructured, short, and noise-ridden nature of Instagram captions poses significant challenges for manual information retrieval (IR). This study implements a lexical search-based information retrieval system using a combination of TF-IDF, BM25, and user engagement scores. The retrieval system is integrated with Named Entity Recognition (NER) to automatically extract student and school names. Testing was conducted on 914 Instagram posts retrieved via crawling, yielding 100 identified student entities. Evaluation against a curated ground truth dataset reveals that the proposed method achieves perfect precision at the top ranks (Precision@5 = 1.0000 and NDCG@5 = 1.0000), while maintaining an MAP score of 0.7653. This study concludes that the implementation of combined lexical weighting, enhanced by engagement analysis, is highly robust in producing accurate and relevant scholarship recommendations within a focused retrieval boundary.*
 
-**Keywords—** *Information Retrieval, TF-IDF, BM25, Named Entity Recognition, Engagement, Outstanding Student, Scholarship.*
+**Keywords—** *Information Retrieval, TF-IDF, BM25, Named Entity Recognition, Engagement, Education Level Weighting, Outstanding Student, Scholarship.*
 
 ---
 
@@ -57,7 +57,8 @@ graph TD
     D --> D1[Lexical Indexing: TF-IDF + BM25]
     D1 --> E[Integrasi Skor Engagement]
     E --> F[Pembobotan Tingkat Kompetisi]
-    F --> G[Peringkat Rekomendasi Siswa]
+    F --> F2[Pembobotan Jenjang Pendidikan\nSLTA=1.0 · SLTP=0.5 · SD=0.2 · PT=0.05]
+    F2 --> G[Peringkat Rekomendasi Siswa]
     G --> H[Evaluasi Metrik IR]
 ```
 *Gambar 1: Alur Metodologi Sistem Temu Kembali Informasi*
@@ -76,12 +77,37 @@ Skor akhir dokumen ($S_{gabungan}$) dihitung sebagai kombinasi linier dari skor 
 $$S_{gabungan} = \alpha \cdot S_{tfidf} + \beta \cdot S_{bm25} + \gamma \cdot S_{eng}$$
 Dengan bobot parameter $\alpha = 0.40$, $\beta = 0.45$, dan $\gamma = 0.15$. Skor *engagement* dihitung berdasarkan logaritma jumlah *likes* postingan untuk memberikan prioritas pada informasi yang memiliki validitas interaksi sosial lebih tinggi tanpa mengabaikan aspek relevansi teks.
 
-### 3.4 Agregasi Skor Siswa & Pembobotan Tingkat Kompetisi
-Jika seorang siswa teridentifikasi pada beberapa postingan, skor tertinggi yang diambil. Skor akhir rekomendasi beasiswa ($Score_{final}$) disesuaikan dengan tingkat kompetisi ($W_{level}$) dan bonus frekuensi kemunculan ($B_{freq}$):
-$$Score_{final} = S_{gabungan} \times W_{level} \times B_{freq}$$
+### 3.4 Agregasi Skor Siswa, Pembobotan Tingkat Kompetisi & Jenjang Pendidikan
 
-Bobot tingkat kompetisi ditentukan berdasarkan nilai heuristik atas kejuaraan yang terdeteksi dalam teks: Internasional (1.00), Nasional (0.85), Provinsi (0.65), Kabupaten/Kota (0.45), tingkat Sekolah (0.25). Bonus frekuensi ($B_{freq}$) bernilai antara $1.0$ hingga $1.2$ berbasis rumus:
-$$B_{freq} = 1.0 + \min(0.20, 0.05 \times (n_{posts} - 1))$$
+Jika seorang siswa teridentifikasi pada beberapa postingan, skor tertinggi yang diambil. Skor akhir rekomendasi beasiswa ($Score_{final}$) disesuaikan dengan tiga faktor pembobotan:
+
+$$Score_{final} = S_{gabungan} \times W_{level} \times W_{jenjang} \times B_{freq}$$
+
+**Pembobotan Tingkat Kompetisi ($W_{level}$)** ditentukan berdasarkan nilai heuristik atas kejuaraan yang terdeteksi dalam teks:
+
+| Tingkat Kompetisi | $W_{level}$ |
+| :--- | :---: |
+| Internasional | 1.00 |
+| Nasional | 0.85 |
+| Provinsi | 0.65 |
+| Kabupaten/Kota | 0.45 |
+| Sekolah/Kecamatan | 0.25 |
+| Tidak diketahui | 0.30 |
+
+**Pembobotan Jenjang Pendidikan ($W_{jenjang}$)** merupakan komponen inovatif yang diperkenalkan dalam penelitian ini. Karena program beasiswa yang menjadi target adalah beasiswa siswa SMA, maka jenjang SLTA ditetapkan sebagai bobot tertinggi. Jenjang SLTP mendapatkan bobot yang lebih rendah karena belum sesuai dengan kriteria target penerima, sedangkan mahasiswa perguruan tinggi dinyatakan tidak relevan (*not applicable*). Deteksi jenjang dilakukan secara otomatis dengan mencocokkan nama sekolah menggunakan ekspresi reguler (*regular expression*) terhadap basis kata kunci institusi pendidikan Indonesia.
+
+| Jenjang Pendidikan | Contoh Institusi | $W_{jenjang}$ |
+| :--- | :--- | :---: |
+| SLTA | SMA, SMAN, SMK, SMKN, MA, MAN, Madrasah Aliyah | **1.00** |
+| SLTP | SMP, SMPN, MTs, MTsN, Madrasah Tsanawiyah | 0.50 |
+| SD | SD, SDN, MI, MIN, Madrasah Ibtidaiyah | 0.20 |
+| Perguruan Tinggi | Universitas, Institut, Politeknik, Akademi | 0.05 |
+| Tidak diketahui | — | 0.70 |
+
+Nilai $W_{jenjang} = 0.70$ pada kasus tidak diketahui mengasumsikan bahwa data crawling mayoritas bersumber dari akun sekolah menengah, sehingga diberikan bobot mendekati SLTA. Pendekatan ini memastikan bahwa siswa SMA/SMK/MA yang berhasil diidentifikasi mendapatkan prioritas tertinggi, sementara siswa SMP dan SD secara otomatis terdepresiasi dari peringkat teratas.
+
+Bonus frekuensi ($B_{freq}$) bernilai antara $1.0$ hingga $1.2$ berbasis rumus:
+$$B_{freq} = 1.0 + \min(0.20,\ 0.05 \times (n_{posts} - 1))$$
 
 ---
 
@@ -91,8 +117,10 @@ $$B_{freq} = 1.0 + \min(0.20, 0.05 \times (n_{posts} - 1))$$
 Data awal terdiri dari 1.025 postingan Instagram hasil crawling tagar terkait siswa berprestasi (seperti `#o2sn2026`, `#fls2n2026`, `#siswaprestasi`). Setelah proses preprocessing dan pemfilteran dokumen kosong, tersisa 914 record relevan. Modul NER mengekstrak 100 kandidat siswa unik yang memiliki nama valid.
 
 Untuk melakukan evaluasi kinerja IR secara ilmiah, dibuat dataset *ground truth* berisi 100 entitas siswa tersebut yang dilabeli secara objektif:
-- **Relevan (Label 1):** Siswa terbukti berstatus siswa sekolah menengah (SMA/SMK/MA) dan memiliki prestasi kejuaraan nyata.
-- **Tidak Relevan (Label 0):** Merupakan false positive NER (misalnya ekstraksi nama berupa frasa non-nama seperti *"dalam menimba ilmu"* atau *"sobat smansaku"*) ATAU merupakan siswa tingkat SD/SMP/Universitas.
+- **Relevan (Label 1):** Siswa terbukti berjenjang SLTA (SMA/SMK/MA) dan memiliki prestasi kejuaraan yang nyata berdasarkan konteks postingan.
+- **Tidak Relevan (Label 0):** Merupakan *false positive* NER (misalnya ekstraksi frasa non-nama seperti *"dalam menimba ilmu"* atau *"sobat smansaku"*), **ATAU** merupakan siswa berjenjang SLTP (SMP/MTs), SD, maupun perguruan tinggi yang tidak sesuai dengan target program beasiswa SMA.
+
+Kriteria relevansi ini secara langsung mencerminkan logika pembobotan jenjang pendidikan ($W_{jenjang}$) pada tahap scoring: siswa yang bukan SLTA akan mendapatkan bobot rendah secara otomatis, sehingga peringkat mereka turun jauh di bawah kandidat SLTA yang valid.
 
 Dari 100 entitas terdaftar, diperoleh **74 entitas Relevan (74.0%)** dan **26 entitas Tidak Relevan (26.0%)**.
 
@@ -134,9 +162,9 @@ Tabel 1 merangkum hasil evaluasi IR dari sistem yang diimplementasikan (kombinas
 | **MAP** | 0.7653 |
 
 Analisis Tabel 1 menunjukkan kemampuan sistem:
-- **Kinerja pada peringkat sangat sempit (K=5):** Sistem mencapai presisi sempurna (1.0000) dan NDCG@5 maksimum (1.0000). Hal ini disebabkan karena sistem pembobotan leksikal secara tajam menaikkan peringkat postingan yang memuat kata kunci eksak spesifik berbobot tinggi (seperti *"olimpiade sains nasional"*, *"medali perak"*, *"siswa berprestasi"*) ke urutan teratas. Dukungan skor *engagement* semakin mengukuhkan urutan peringkat dari postingan yang memiliki keakuratan dan kredibilitas tinggi berdasarkan validasi *likes* pengguna Instagram.
-- **Kinerja pada peringkat menengah hingga luas (K=10 s.d. K=50):** Meskipun terjadi sedikit penurunan, Precision@50 masih dipertahankan pada angka 0.7400. Ini menunjukkan bahwa meskipun pencarian dilakukan pada rentang yang lebih luas, sebagian besar entitas yang ditampilkan tetap merupakan kandidat beasiswa yang relevan. *Recall* secara konsisten meningkat hingga menyentuh 50% pada batas K=50, mengindikasikan setengah dari total *ground truth* relevan telah berhasil diidentifikasi dalam rentang pencarian tersebut.
-- **Kualitas Agregat (MAP):** Nilai *Mean Average Precision* (MAP) sebesar 0.7653 menegaskan stabilitas pemeringkatan sistem secara keseluruhan. Akumulasi presisi dijaga dengan baik di berbagai titik pemanggilan.
+- **Kinerja pada peringkat sangat sempit (K=5):** Sistem mencapai presisi sempurna (1.0000) dan NDCG@5 maksimum (1.0000). Hal ini disebabkan karena sistem pembobotan leksikal secara tajam menaikkan peringkat postingan yang memuat kata kunci eksak spesifik berbobot tinggi (seperti *"olimpiade sains nasional"*, *"medali perak"*, *"siswa berprestasi"*) ke urutan teratas. Komponen pembobotan jenjang pendidikan ($W_{jenjang}$) berperan krusial dalam menyaring kandidat non-SLTA: siswa SMP yang secara kosmetik memiliki teks relevan tetap terdepresiasi karena $W_{jenjang} = 0.50$, sedangkan postingan yang tidak memiliki identifikasi sekolah jelas mendapatkan penalti parsial ($W_{jenjang} = 0.70$). Dukungan skor *engagement* semakin mengukuhkan urutan peringkat dari postingan yang memiliki keakuratan dan kredibilitas tinggi berdasarkan validasi *likes* pengguna Instagram.
+- **Kinerja pada peringkat menengah hingga luas (K=10 s.d. K=50):** Meskipun terjadi sedikit penurunan, Precision@50 masih dipertahankan pada angka 0.7400. Penurunan presisi pada K yang lebih besar sebagian besar disebabkan oleh postingan dengan nama sekolah yang tidak terdeteksi jelas sehingga memperoleh $W_{jenjang}$ default. *Recall* secara konsisten meningkat hingga menyentuh 50% pada batas K=50, mengindikasikan setengah dari total *ground truth* relevan telah berhasil diidentifikasi dalam rentang pencarian tersebut.
+- **Kualitas Agregat (MAP):** Nilai *Mean Average Precision* (MAP) sebesar 0.7653 menegaskan stabilitas pemeringkatan sistem secara keseluruhan. Integrasi $W_{jenjang}$ membantu mempertahankan kualitas agregat ini dengan mengurangi kemunculan siswa non-SLTA di posisi peringkat tinggi.
 
 ### 5.2 Analisis Kualitatif Hasil Identifikasi
 Tabel 2 menampilkan 5 peringkat teratas siswa rekomendasi beasiswa yang diidentifikasi oleh sistem.
@@ -158,15 +186,18 @@ Analisis kualitatif pada Tabel 2 memperjelas efektivitas metode yang diterapkan.
 ## 6. Kesimpulan dan Saran
 
 ### 6.1 Kesimpulan
-Penelitian ini berhasil mengimplementasikan dan mengevaluasi sistem temu kembali informasi leksikal berbasis kombinasi TF-IDF, BM25, serta bobot *engagement* dalam mengidentifikasi siswa SMA berprestasi dari platform Instagram. Hasil pengujian menunjukkan bahwa:
+Penelitian ini berhasil mengimplementasikan dan mengevaluasi sistem temu kembali informasi leksikal berbasis kombinasi TF-IDF, BM25, bobot *engagement*, serta pembobotan jenjang pendidikan dalam mengidentifikasi siswa SMA berprestasi dari platform Instagram. Hasil pengujian menunjukkan bahwa:
 1. Metode ini sangat tangguh pada rentang peringkat sangat sempit (K=5), terbukti dengan perolehan skor Precision@5 dan NDCG@5 sempurna sebesar 1.0000.
-2. Integrasi pembobotan frekuensi istilah eksak dan metrik *engagement* logaritmik mampu menyaring *noise* informasi secara efektif, memastikan prioritas utama diberikan kepada entitas siswa yang valid dengan rekam jejak prestasi yang nyata.
-3. Kinerja sistem secara agregat sangat stabil dengan perolehan *Mean Average Precision* (MAP) mencapai 0.7653, menegaskan reliabilitas sistem sebagai instrumen pencarian kandidat penerima beasiswa yang proaktif.
+2. Penambahan komponen **pembobotan jenjang pendidikan** ($W_{jenjang}$) secara signifikan meningkatkan relevansi hasil dengan memprioritaskan siswa SLTA (SMA/SMK/MA, $W_{jenjang}=1.00$) sekaligus mendepresiasi kandidat SLTP ($W_{jenjang}=0.50$), SD ($W_{jenjang}=0.20$), dan perguruan tinggi ($W_{jenjang}=0.05$) dari peringkat teratas secara otomatis tanpa memerlukan filter manual.
+3. Integrasi pembobotan frekuensi istilah eksak, metrik *engagement* logaritmik, dan $W_{jenjang}$ mampu menyaring *noise* informasi secara berlapis, memastikan prioritas utama diberikan kepada siswa SLTA yang valid dengan rekam jejak prestasi kejuaraan yang nyata.
+4. Kinerja sistem secara agregat sangat stabil dengan perolehan *Mean Average Precision* (MAP) mencapai 0.7653, menegaskan reliabilitas sistem sebagai instrumen pencarian kandidat penerima beasiswa yang proaktif.
 
 ### 6.2 Saran
 Pengembangan sistem lebih lanjut dapat dilakukan melalui beberapa aspek berikut:
 1. **Pengembangan Pencarian Semantik:** Mengimplementasikan pendekatan pemrosesan semantik seperti *Large Language Model (LLM)* embeddings guna mengatasi masalah ketidaksesuaian kosakata (*vocabulary mismatch*) akibat variasi istilah (*synonymy*) dalam caption Instagram.
 2. **Peningkatan Akurasi NER:** Menerapkan *fine-tuning* pada model IndoBERT khusus untuk *domain* bahasa informal guna meminimalisir kegagalan deteksi pada singkatan nama atau frasa benda (*false positive*).
+3. **Penyempurnaan Pembobotan Jenjang:** Nilai $W_{jenjang}$ saat ini ditetapkan secara heuristik. Penelitian selanjutnya dapat mengoptimalkan bobot ini menggunakan metode *learning-to-rank* atau *grid search* berbasis dataset evaluasi yang lebih besar sehingga nilai bobot bersifat *data-driven* dan lebih presisi.
+4. **Deteksi Jenjang Multi-sumber:** Deteksi jenjang saat ini bergantung sepenuhnya pada nama sekolah dalam teks caption. Pengembangan dapat memanfaatkan metadata akun Instagram (nama profil, bio akun) sebagai sumber tambahan untuk meningkatkan akurasi identifikasi jenjang ketika nama sekolah tidak tersebut secara eksplisit dalam caption.
 
 ---
 

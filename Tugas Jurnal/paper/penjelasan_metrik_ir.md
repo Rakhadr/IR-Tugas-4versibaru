@@ -5,7 +5,7 @@ Dokumen ini menjelaskan secara rinci metrik-metrik yang digunakan dalam evaluasi
 ---
 
 ## 1. Ground Truth Relevan
-**Definisi:** *Ground Truth* adalah data pelabelan manual atau semi-otomatis yang dianggap sebagai kebenaran mutlak (standar emas) untuk menguji keakuratan algoritma. Dalam konteks sistem kita, kandidat dinilai relevan (nilai 1) jika memenuhi syarat: namanya valid (bukan frasa *noise* NER), jenjang pendidikannya SMA/SMK/MA, dan terdapat bukti prestasi nyata di teks *caption*. Jika kandidat adalah jenjang SD/SMP, universitas, atau sekadar ekstrak kata yang salah (misalnya "dalam menimba ilmu"), maka dinilai tidak relevan (nilai 0).
+**Definisi:** *Ground Truth* adalah data pelabelan manual atau semi-otomatis yang dianggap sebagai kebenaran mutlak (standar emas) untuk menguji keakuratan algoritma. Dalam konteks sistem kita, kandidat dinilai relevan (nilai 1) jika memenuhi syarat: bunamanya valid (kan frasa *noise* NER), jenjang pendidikannya SMA/SMK/MA, dan terdapat bukti prestasi nyata di teks *caption*. Jika kandidat adalah jenjang SD/SMP, universitas, atau sekadar ekstrak kata yang salah (misalnya "dalam menimba ilmu"), maka dinilai tidak relevan (nilai 0).
 
 **Pengaruhnya:** *Ground Truth* adalah pondasi seluruh metrik. Tanpa *ground truth* yang valid, mustahil mengukur seberapa baik sistem membedakan informasi yang benar-benar dicari (*signal*) dari informasi acak yang terbawa (*noise*).
 

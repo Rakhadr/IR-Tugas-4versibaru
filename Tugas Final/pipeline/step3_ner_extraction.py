@@ -56,24 +56,61 @@ INDONESIAN_NAME_PATTERN = re.compile(
 
 # ─── Kata bukan nama (false positives umum) ──────────────────────────────────
 BLACKLIST_WORDS = {
-    "Selamat", "Sukses", "Indonesia", "Nasional", "Provinsi", "Kabupaten",
-    "Kota", "Juara", "Olimpiade", "Sains", "Prestasi", "Siswa", "Siswi",
-    "Murid", "Ananda", "Kepada", "Untuk", "Lomba", "Kompetisi", "Festival",
-    "Tingkat", "Bidang", "Matematika", "Biologi", "Fisika", "Kimia",
-    "Informatika", "Geografi", "Ekonomi", "Astronomi", "Kebumian",
-    "Monday", "Tuesday", "January", "February", "Senin", "Selasa",
-    "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu", "Januari", "Februari",
-    "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September",
-    "Oktober", "November", "Desember", "Alhamdulillah", "Semoga",
-    "Teruslah", "Semangat", "Bangga", "Terus", "Kami", "Kita", "Mereka",
-    "Terima", "Kasih", "Sekolah", "Madrasah", "Islam", "Negeri", "Swasta",
+    # Ucapan / kata sapaan
+    "Selamat", "Sukses", "Semoga", "Alhamdulillah", "Teruslah", "Semangat",
+    "Bangga", "Terus", "Terima", "Kasih", "Ananda", "Kepada", "Untuk",
+    "Kami", "Kita", "Mereka", "Atas", "Pada",
+
+    # Prestasi / kompetisi
+    "Juara", "Olimpiade", "Sains", "Prestasi", "Lomba", "Kompetisi",
+    "Festival", "Tingkat", "Bidang", "Nasional", "Internasional", "Provinsi",
+
+    # Mata pelajaran / bidang
+    "Matematika", "Biologi", "Fisika", "Kimia", "Informatika", "Geografi",
+    "Ekonomi", "Astronomi", "Kebumian", "Bahasa", "Inggris", "Indonesia",
+    "Sejarah", "Sosiologi", "Akuntansi", "Sastra", "Komputer",
+
+    # Olahraga / seni
+    "Renang", "Futsal", "Pencak", "Silat", "Gaya", "Kupu", "Jurus",
+    "Tunggal", "Tari", "Kreasi", "Vokal", "Musik", "Paduan", "Suara",
+
+    # Peran / jabatan
+    "Guru", "Pembimbing", "Kepala", "Wakil", "Staff", "Siswa", "Siswi",
+    "Murid", "Pelajar", "Mahasiswa", "Dosen", "Pelatih", "Pendamping",
+    "Kejuruan", "Umum",
+
+    # Institusi / organisasi
+    "Sekolah", "Madrasah", "Islam", "Negeri", "Swasta", "Nahdlatul", "Ulama",
+    "Boarding", "School", "Lentera", "Harapan", "Syifa", "Granada",
     "SMA", "SMK", "SMAN", "SMP", "SMPN", "SD", "SDN", "MA", "MAN", "MTs",
-    "Jawa", "Barat", "Timur", "Tengah", "Sulawesi", "Sumatera", "Kalimantan",
-    "Jakarta", "Bandung", "Surabaya", "Yogyakarta", "Bali", "Aceh",
-    "Lampung", "Riau", "Jambi", "Bengkulu", "Palembang", "Medan",
-    "Makassar", "Manado", "Pontianak", "Samarinda", "Ambon", "Papua",
+
+    # Kata kerja / frasa aksi
+    "Meraih", "Melangkah", "Menuju", "Kick", "Follow", "Registrasi",
+    "Dokumentasi", "Simulasi", "Berhasil", "Raih", "Jadwal", "Pelaksanaan",
+
+    # Bahasa Inggris umum
+    "Level", "Advanced", "On", "Instagram", "Championship", "Gold", "Silver",
+    "Bronze", "Center", "Admin",
+
+    # Kata sifat / keterangan
     "Unggul", "Terbaik", "Hebat", "Luar", "Biasa", "Masa", "Depan",
-    "Gold", "Silver", "Bronze", "Emas", "Perak", "Perunggu",
+    "Gratis", "Lebih", "Dekat", "Seluruh", "Fasilitas", "Laboratorium",
+
+    # Penghargaan
+    "Emas", "Perak", "Perunggu",
+
+    # Geografi Indonesia
+    "Kabupaten", "Kota", "Jawa", "Barat", "Timur", "Tengah", "Sulawesi",
+    "Sumatera", "Kalimantan", "Jakarta", "Bandung", "Surabaya", "Yogyakarta",
+    "Bali", "Aceh", "Lampung", "Riau", "Jambi", "Bengkulu", "Palembang",
+    "Medan", "Makassar", "Manado", "Pontianak", "Samarinda", "Ambon", "Papua",
+    "Wonosari", "Amuntai",
+
+    # Hari / bulan
+    "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu",
+    "Monday", "Tuesday", "January", "February",
+    "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+    "Juli", "Agustus", "September", "Oktober", "November", "Desember",
 }
 
 
@@ -115,10 +152,15 @@ def is_valid_name(name: str) -> bool:
     Kriteria:
     - 2-5 kata
     - Tidak mengandung kata dalam blacklist
-    - Tidak mengandung angka
+    - Tidak mengandung angka atau newline
     - Panjang total 4-50 karakter
+    - Setiap kata diawali huruf kapital (bukan lowercase / ALL CAPS panjang)
     """
     if not name or len(name) < 4 or len(name) > 50:
+        return False
+
+    # Tolak jika ada newline (artefak gabungan dua kalimat)
+    if "\n" in name or "\r" in name:
         return False
 
     words = name.strip().split()
@@ -129,9 +171,18 @@ def is_valid_name(name: str) -> bool:
         return False
 
     for word in words:
-        if word in BLACKLIST_WORDS:
-            return False
         if len(word) < 2:
+            return False
+
+        # Setiap kata harus diawali huruf kapital
+        if not word[0].isupper():
+            return False
+
+        # Tolak kata ALL CAPS lebih dari 3 karakter (bukan inisial/singkatan nama)
+        if word.isupper() and len(word) > 3:
+            return False
+
+        if word in BLACKLIST_WORDS:
             return False
 
     return True
@@ -154,7 +205,7 @@ def merge_names(rule_names: list, heuristic_names: list) -> tuple:
     return list(confidence.keys()), confidence
 
 
-def extract_school(caption: str) -> str | None:
+def extract_school(caption: str):
     """Ekstrak nama sekolah dari caption."""
     patterns = [
         r"(SMA(?:N|K)?\s+(?:Negeri\s+)?\d+\s+\w+)",
